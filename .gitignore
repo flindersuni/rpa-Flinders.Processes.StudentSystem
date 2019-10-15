@@ -1,0 +1,6 @@
+# Ignore files and directories that must not be added to the repository.
+#
+# Ignore local cache directory.
+.local
+# Ignore ConstantValues.xaml which contains sensitive information.
+ConstantValues.xaml
