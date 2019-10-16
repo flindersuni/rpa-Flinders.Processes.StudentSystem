@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ProcessRecord" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ProcessRecord" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:f="clr-namespace:Flinders_Foundation_StudentSystem;assembly=Flinders.Foundation.StudentSystem" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="A record that needs to be processed" Name="RecordToBeProcessed" Type="InOutArgument(sd:DataRow)" />
     <x:Property sap2010:Annotation.AnnotationText="A flag indicating if processing was successful or not" Name="ProcessSuccessful" Type="OutArgument(x:Boolean)" />
@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>240,306</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>262,313</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -57,12 +57,16 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Undertake the steps necessary to process a record from the input file. Assuming the target system(s) have been initialised appropriately." DisplayName="ProcessRecord" sap:VirtualizedContainerService.HintSize="200,186" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Undertake the steps necessary to process a record from the input file. Assuming the target system(s) have been initialised appropriately." DisplayName="ProcessRecord" sap:VirtualizedContainerService.HintSize="222,233" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:Browser" sap2010:Annotation.AnnotationText="A reference to the currently active browser tab" Name="activeBrowser" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <f:EnterStudentComment ActiveBrowser="[activeBrowser]" CommentCode="[RecordToBeProcessed(&quot;CommentCode&quot;).ToString()]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="EnterStudentComment_1" ProcessMessage="[ProcessMessage]" ProcessSuccessful="[ProcessSuccessful]" StudentID="[RecordToBeProcessed(&quot;StudentID&quot;).ToString()]" StudyPackageAttempt="[RecordToBeProcessed(&quot;CourseAttempt&quot;).ToString()]" StudyPackageCode="[RecordToBeProcessed(&quot;CourseCode&quot;).ToString()]" StudyPackageVersion="[RecordToBeProcessed(&quot;CourseVersion&quot;).ToString()]" StudyPeriod="[RecordToBeProcessed(&quot;StudyPeriod&quot;).ToString()]" StudyYear="[RecordToBeProcessed(&quot;StudyYear&quot;).ToString()]" />
   </Sequence>
 </Activity>

@@ -4,7 +4,7 @@
   "main": "Main.xaml",
   "dependencies": {
     "Flinders.Foundation": "2.0.3",
-    "Flinders.Foundation.StudentSystem": "2.0.1",
+    "Flinders.Foundation.StudentSystem": "2.0.2-alpha",
     "UiPath.Excel.Activities": "[2.6.3]",
     "UiPath.Mail.Activities": "[1.6.0]",
     "UiPath.System.Activities": "[19.8.0]",
