@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>759,1882</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1335,4566</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -56,7 +56,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Process an individual file in the PROCESSING folder" DisplayName="ProcessTheFile" sap:VirtualizedContainerService.HintSize="1295,4255" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Process an individual file in the PROCESSING folder" DisplayName="ProcessTheFile" sap:VirtualizedContainerService.HintSize="1295,4486" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" sap2010:Annotation.AnnotationText="A list of recrds retreieved from the input file" Name="recordsToProcess" />
       <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="The number if records in the input file that were skipped because they were processed already" Default="0" Name="recordsSkipped" />
@@ -67,6 +67,7 @@
       <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="The number of times an error has occurred consecutively" Default="0" Name="consecutiveErrorCount" />
       <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="The number of consecutive errors that are allowed to occur." Default="5" Name="consecutiveErrorThreshold" />
       <Variable x:TypeArguments="x:Boolean" sap2010:Annotation.AnnotationText="A flag indicating the overall status of the file" Default="True" Name="fileStatus" />
+      <Variable x:TypeArguments="x:Boolean" sap2010:Annotation.AnnotationText="A flag indicating if the Orchestrator job running this automation has been stopped. " Name="orchestratorShouldStopFlag" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -229,14 +230,14 @@
       </ui:CheckTrue>
     </Sequence>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1273,91" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[String.Format(&quot;Number of records in file: {0}&quot;, recordsToProcess.Rows.Count)]" />
-    <If sap2010:Annotation.AnnotationText="Check to see if there are records that need to be processed in the file" Condition="[recordsToProcess.Select(&quot;RobotProcessed = ''&quot;).Length &gt; 0]" sap:VirtualizedContainerService.HintSize="1273,3014" sap2010:WorkflowViewState.IdRef="If_5">
+    <If sap2010:Annotation.AnnotationText="Check to see if there are records that need to be processed in the file" Condition="[recordsToProcess.Select(&quot;RobotProcessed = ''&quot;).Length &gt; 0]" sap:VirtualizedContainerService.HintSize="1273,3245" sap2010:WorkflowViewState.IdRef="If_5">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap2010:Annotation.AnnotationText="Yes, there is at least one record that needs processing" sap:VirtualizedContainerService.HintSize="912,2839" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <Sequence sap2010:Annotation.AnnotationText="Yes, there is at least one record that needs processing" sap:VirtualizedContainerService.HintSize="912,3070" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -253,26 +254,26 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:InvokeWorkflowFile>
-          <ui:ForEachRow CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Process record in the input file" DataTable="[recordsToProcess]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="890,2392" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+          <ui:ForEachRow CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Process record in the input file" DataTable="[recordsToProcess]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="890,2623" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
             <ui:ForEachRow.Body>
               <ActivityAction x:TypeArguments="sd:DataRow">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="860,2217" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="860,2448" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If sap2010:Annotation.AnnotationText="Has the record already been processed?" Condition="[String.IsNullOrWhiteSpace(row(&quot;RobotProcessed&quot;).ToString())]" sap:VirtualizedContainerService.HintSize="838,2093" sap2010:WorkflowViewState.IdRef="If_6">
+                  <If sap2010:Annotation.AnnotationText="Has the record already been processed?" Condition="[String.IsNullOrWhiteSpace(row(&quot;RobotProcessed&quot;).ToString())]" sap:VirtualizedContainerService.HintSize="838,2324" sap2010:WorkflowViewState.IdRef="If_6">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <Sequence sap2010:Annotation.AnnotationText="Process a record" sap:VirtualizedContainerService.HintSize="571,1918" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                      <Sequence sap2010:Annotation.AnnotationText="Process a record" sap:VirtualizedContainerService.HintSize="571,2149" sap2010:WorkflowViewState.IdRef="Sequence_11">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -292,7 +293,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </Assign>
-                        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="549,1625" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="549,1856" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -300,7 +301,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <TryCatch.Try>
-                            <Sequence sap:VirtualizedContainerService.HintSize="531,1398" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                            <Sequence sap:VirtualizedContainerService.HintSize="531,1629" sap2010:WorkflowViewState.IdRef="Sequence_12">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -415,6 +416,14 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:CheckFalse>
+                              <ui:ShouldStop sap2010:Annotation.AnnotationText="Check to see if this job has been stopped in Orchestrator" DisplayName="Should Stop" sap:VirtualizedContainerService.HintSize="509,64" sap2010:WorkflowViewState.IdRef="ShouldStop_1" Result="[orchestratorShouldStopFlag]">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:ShouldStop>
+                              <ui:CheckFalse DisplayName="Check False" ErrorMessage="Stopping process as indicated by UiPath Orchestrator 'should stop' flag." Expression="[orchestratorShouldStopFlag]" sap:VirtualizedContainerService.HintSize="509,87" sap2010:WorkflowViewState.IdRef="CheckFalse_6" />
                             </Sequence>
                           </TryCatch.Try>
                           <TryCatch.Catches>
@@ -429,7 +438,7 @@
                                 <ActivityAction.Argument>
                                   <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                 </ActivityAction.Argument>
-                                <Sequence sap:VirtualizedContainerService.HintSize="336,715" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                <Sequence sap:VirtualizedContainerService.HintSize="336,673" sap2010:WorkflowViewState.IdRef="Sequence_14">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
