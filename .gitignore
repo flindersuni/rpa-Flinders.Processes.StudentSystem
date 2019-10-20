@@ -4,3 +4,5 @@
 .local
 # Ignore ConstantValues.xaml which contains sensitive information.
 ConstantValues.xaml
+# Ignore temporary xaml files
+~*
