@@ -3,8 +3,8 @@
   "description": "Send a batch of correspondence using the SSP Merge window",
   "main": "Main.xaml",
   "dependencies": {
-    "Flinders.Foundation": "2.0.3",
-    "Flinders.Foundation.StudentSystem": "2.0.2-alpha.4",
+    "Flinders.Foundation": "2.0.4",
+    "Flinders.Foundation.StudentSystem": "2.0.2",
     "Flinders.Foundation.Testing": "1.0.3",
     "UiPath.Excel.Activities": "[2.6.3]",
     "UiPath.Mail.Activities": "[1.6.0]",
