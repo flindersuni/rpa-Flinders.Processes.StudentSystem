@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>262,313</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>262,375</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -54,10 +54,9 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Undertake the steps necessary to process a record from the input file. Assuming the target system(s) have been initialised appropriately." DisplayName="ProcessRecord" sap:VirtualizedContainerService.HintSize="222,233" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Undertake the steps necessary to process a record from the input file. Assuming the target system(s) have been initialised appropriately." DisplayName="ProcessRecord" sap:VirtualizedContainerService.HintSize="222,295" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:Browser" sap2010:Annotation.AnnotationText="A reference to the currently active browser tab" Name="activeBrowser" />
     </Sequence.Variables>
@@ -68,5 +67,6 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <f:EnterStudentComment ActiveBrowser="[activeBrowser]" CommentCode="[RecordToBeProcessed(&quot;CommentCode&quot;).ToString()]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="EnterStudentComment_1" ProcessMessage="[ProcessMessage]" ProcessSuccessful="[ProcessSuccessful]" StudentID="[RecordToBeProcessed(&quot;StudentID&quot;).ToString()]" StudyPackageAttempt="[RecordToBeProcessed(&quot;CourseAttempt&quot;).ToString()]" StudyPackageCode="[RecordToBeProcessed(&quot;CourseCode&quot;).ToString()]" StudyPackageVersion="[RecordToBeProcessed(&quot;CourseVersion&quot;).ToString()]" StudyPeriod="[RecordToBeProcessed(&quot;StudyPeriod&quot;).ToString()]" StudyYear="[RecordToBeProcessed(&quot;StudyYear&quot;).ToString()]" />
+    <f:ResetWindow ActiveBrowser="{x:Null}" ProcessMessage="{x:Null}" ProcessSuccessful="{x:Null}" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="ResetWindow_1" WindowName="Student Comments" />
   </Sequence>
 </Activity>
