@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>775,3253</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>895,2343</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -54,10 +54,9 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Move any new files in the INPUT folder to the PROCESSING folder, ready for processing." DisplayName="MoveNewInputFiles" sap:VirtualizedContainerService.HintSize="735,3133" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Move any new files in the INPUT folder to the PROCESSING folder, ready for processing." DisplayName="MoveNewInputFiles" sap:VirtualizedContainerService.HintSize="875,2243" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" sap2010:Annotation.AnnotationText="A list of files in the INPUT folder that match the supplied file pattern" Name="inputFiles" />
     </Sequence.Variables>
@@ -67,8 +66,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="713,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Trace" Message="[&quot;Start: MoveNewInputFiles&quot;]" />
-    <TryCatch sap2010:Annotation.AnnotationText="Validate the incoming arguments" DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="713,1393" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="833,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Trace" Message="[&quot;Start: MoveNewInputFiles&quot;]" />
+    <TryCatch sap2010:Annotation.AnnotationText="Validate the incoming arguments" DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="833,545" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -77,28 +76,28 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap2010:Annotation.AnnotationText="Check the arguments prior to execution" sap:VirtualizedContainerService.HintSize="336,1139" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap2010:Annotation.AnnotationText="Check the arguments prior to execution" sap:VirtualizedContainerService.HintSize="376,1107" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:CheckFalse DisplayName="Check False" ErrorMessage="The 'InputFolder' argument is required" Expression="[IsNothing(InputFolder)]" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="CheckFalse_6" />
-          <ui:CheckTrue DisplayName="Check True" ErrorMessage="[String.Format(&quot;The input folder '{0}' must exist&quot;, inputFolder)]" Expression="[System.IO.Directory.Exists(inputFolder)]" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="CheckTrue_1" />
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[String.Format(&quot;Input folder '{0}'&quot;, inputFolder)]" />
-          <ui:CheckFalse DisplayName="Check False" ErrorMessage="The 'ProcessingFolder' argument is required" Expression="[IsNothing(ProcessingFolder)]" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="CheckFalse_8" />
-          <ui:CheckTrue DisplayName="Check True" ErrorMessage="[String.Format(&quot;The processing folder '{0}' must exist&quot;, ProcessingFolder)]" Expression="[System.IO.Directory.Exists(ProcessingFolder)]" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="CheckTrue_2" />
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[String.Format(&quot;Processing folder '{0}'&quot;, ProcessingFolder)]" />
-          <ui:CheckFalse DisplayName="Check False" ErrorMessage="The 'FilePattern' argument is required" Expression="[IsNothing(FilePattern)]" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="CheckFalse_10" />
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Trace" Message="[String.Format(&quot;File pattern '{0}'&quot;, FilePattern)]" />
+          <ui:CheckFalse DisplayName="Check False" ErrorMessage="The 'InputFolder' argument is required" Expression="[IsNothing(InputFolder)]" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="CheckFalse_6" />
+          <ui:CheckTrue DisplayName="Check True" ErrorMessage="[String.Format(&quot;The input folder '{0}' must exist&quot;, inputFolder)]" Expression="[System.IO.Directory.Exists(inputFolder)]" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="CheckTrue_1" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[String.Format(&quot;Input folder '{0}'&quot;, inputFolder)]" />
+          <ui:CheckFalse DisplayName="Check False" ErrorMessage="The 'ProcessingFolder' argument is required" Expression="[IsNothing(ProcessingFolder)]" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="CheckFalse_8" />
+          <ui:CheckTrue DisplayName="Check True" ErrorMessage="[String.Format(&quot;The processing folder '{0}' must exist&quot;, ProcessingFolder)]" Expression="[System.IO.Directory.Exists(ProcessingFolder)]" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="CheckTrue_2" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[String.Format(&quot;Processing folder '{0}'&quot;, ProcessingFolder)]" />
+          <ui:CheckFalse DisplayName="Check False" ErrorMessage="The 'FilePattern' argument is required" Expression="[IsNothing(FilePattern)]" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="CheckFalse_10" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Trace" Message="[String.Format(&quot;File pattern '{0}'&quot;, FilePattern)]" />
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="ui:CheckpointException" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="ui:CheckpointException" sap:VirtualizedContainerService.HintSize="400,356" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -106,21 +105,22 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:CheckpointException" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence sap:VirtualizedContainerService.HintSize="336,277" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence sap2010:Annotation.AnnotationText="Catch and log the exception and throw a more informative ConfigurationException" sap:VirtualizedContainerService.HintSize="376,287" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[exception]" />
-              <f:ThrowConfigurationException sap:VirtualizedContainerService.HintSize="314,22" sap2010:WorkflowViewState.IdRef="ThrowConfigurationException_1" Message="[exception.Message]" />
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[exception]" />
+              <f:ThrowConfigurationException sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="ThrowConfigurationException_1" Message="[exception.Message]" />
             </Sequence>
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="713,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[String.Format(&quot;Looking for files matching '{0}' in the input directory.&quot;, FilePattern)]" />
-    <Assign sap2010:Annotation.AnnotationText="Get a list of files in the INPUT folder that matches the file pattern" sap:VirtualizedContainerService.HintSize="713,102" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="833,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[String.Format(&quot;Looking for files matching '{0}' in the input directory.&quot;, FilePattern)]" />
+    <Assign sap2010:Annotation.AnnotationText="Get a list of files in the INPUT folder that matches the file pattern" sap:VirtualizedContainerService.HintSize="833,102" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[inputFiles]</OutArgument>
       </Assign.To>
@@ -133,34 +133,36 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <If sap2010:Annotation.AnnotationText="Move the found files from the INPUT folder to the PROCESSING folder" Condition="[inputFiles.Length &gt; 0]" sap:VirtualizedContainerService.HintSize="713,883" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="Are there found files in the INPUT folder " Condition="[inputFiles.Length &gt; 0]" sap:VirtualizedContainerService.HintSize="833,873" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="374,708" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence sap2010:Annotation.AnnotationText="Yes, move each file in sequence from the INPUT folder to the PROCESSING folder" sap:VirtualizedContainerService.HintSize="454,698" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="352,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[String.Format(&quot;Found {0} new input files to process&quot;, inputFiles.Length)]" />
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Move each new file in the INPUT folder to the PROCESSING folder" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="352,453" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[inputFiles]">
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="412,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[String.Format(&quot;Found {0} new input files to process&quot;, inputFiles.Length)]" />
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Move each new file in the INPUT folder to the PROCESSING folder" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="412,433" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[inputFiles]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:String" Name="item" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="336,277" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence sap2010:Annotation.AnnotationText="Move each of the new files in sequence" DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,272" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:MoveFile ContinueOnError="{x:Null}" Destination="[ProcessingFolder]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="314,22" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="False" Path="[item]" />
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[String.Format(&quot;Moved file '{0}' to '{1}'&quot;, item, ProcessingFolder)]" />
+                  <ui:MoveFile ContinueOnError="{x:Null}" Destination="[ProcessingFolder]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="False" Path="[item]" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[String.Format(&quot;Moved file '{0}' to '{1}'&quot;, item, ProcessingFolder)]" />
                 </Sequence>
               </ActivityAction>
             </ui:ForEach.Body>
@@ -173,10 +175,16 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Warn" Message="[String.Format(&quot;Found 0 new input files to move to the processing directory&quot;)]" />
+        <ui:LogMessage sap2010:Annotation.AnnotationText="No, log a message and skip this step" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,118" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Warn" Message="[String.Format(&quot;Found 0 new input files to move to the processing directory&quot;)]">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:LogMessage>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="713,91" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[String.Format(&quot;Successfully moved '{0}' files from '{1}' to '{2}'&quot;, inputFiles.Length, InputFolder, ProcessingFolder)]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="713,91" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Trace" Message="[&quot;End: MoveNewInputFiles&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="833,91" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[String.Format(&quot;Successfully moved '{0}' files from '{1}' to '{2}'&quot;, inputFiles.Length, InputFolder, ProcessingFolder)]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="833,91" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Trace" Message="[&quot;End: MoveNewInputFiles&quot;]" />
   </Sequence>
 </Activity>
