@@ -2,7 +2,7 @@
 #
 # Ignore local cache directory.
 .local
+# Ignore local settings directory.
+.settings
 # Ignore ConstantValues.xaml which contains sensitive information.
 ConstantValues.xaml
-# Ignore temporary xaml files
-~*
