@@ -3,18 +3,18 @@
   "description": "Send a batch of correspondence using the SSP Merge window",
   "main": "Main.xaml",
   "dependencies": {
-    "Flinders.Foundation": "2.0.5",
-    "Flinders.Foundation.StudentSystem": "2.0.3",
+    "Flinders.Foundation": "2.0.6",
+    "Flinders.Foundation.StudentSystem": "2.0.4",
     "Flinders.Foundation.Testing": "1.0.4",
     "UiPath.Excel.Activities": "[2.7.2]",
     "UiPath.Mail.Activities": "[1.7.2]",
     "UiPath.System.Activities": "[19.10.1]",
-    "UiPath.UIAutomation.Activities": "[19.10.1]"
+    "UiPath.UIAutomation.Activities": "[19.11.1]"
   },
   "webServices": [],
   "schemaVersion": "4.0",
   "studioVersion": "19.10.1.0",
-  "projectVersion": "1.0.2",
+  "projectVersion": "1.0.3",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
