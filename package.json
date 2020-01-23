@@ -1,0 +1,29 @@
+{
+  "name": "flinders.processes.studentsystem.rpa-lint",
+  "version": "1.0.0",
+  "description": "Convenience package for invoking the rpa-lint app on the Flinders.Processes.StudentSystem processes",
+  "scripts": {
+    "test": "rpa-lint -i ./SendSspMergeCorrespondence -p -r -q && rpa-lint -i ./EnterStudentComments -p -r -q && rpa-lint -i ./UpdateSspUserField -p -r -q "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flindersuni/rpa-Flinders.Processes.StudentSystem.git"
+  },
+  "private": true,
+  "keywords": [
+    "rpa",
+    "robotic-process-automation",
+    "uipath",
+    "university",
+    "academic"
+  ],
+  "author": "Corey Wallis <corey.wallis@flinders.edu.au> (https://staff.flinders.edu.au/business-improvement)",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/flindersuni/rpa-Flinders.Processes.StudentSystem/issues"
+  },
+  "homepage": "https://github.com/flindersuni/rpa-Flinders.Processes.StudentSystem#readme",
+  "dependencies": {
+    "rpa-lint": "flindersuni/rpa-lint"
+  }
+}
