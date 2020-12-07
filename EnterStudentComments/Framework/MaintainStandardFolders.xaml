@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>897,5611</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1632,6253</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -57,12 +57,12 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Ensure that the standard folders are present and undertake any necessary maintenance on them" DisplayName="MaintainStandardFolders" sap:VirtualizedContainerService.HintSize="877,5511" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Ensure that the standard folders are present and undertake any necessary maintenance on them" DisplayName="MaintainStandardFolders" sap:VirtualizedContainerService.HintSize="877,6088" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The path to the standard 'input' folder were files to be processed will be found" Default="input" Name="inputPath" />
-      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The path to the standard 'output' folder were files that have been processed will be stored" Default="output" Name="outputPath" />
-      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The path to the standard 'processing' folder were files that are being processed will be stored" Default="processing" Name="processingPath" />
-      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The path to the standard 'error' folder were files that have errors will be stored" Default="error" Name="errorPath" />
+      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The path to the standard 'input' folder were files to be processed will be found" Name="inputPath" />
+      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The path to the standard 'output' folder were files that have been processed will be stored" Name="outputPath" />
+      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The path to the standard 'processing' folder were files that are being processed will be stored" Name="processingPath" />
+      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The path to the standard 'error' folder were files that have errors will be stored" Name="errorPath" />
       <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The path to the detected common data folder" Name="commonDataPath" />
       <Variable x:TypeArguments="x:Boolean" sap2010:Annotation.AnnotationText="A flag indicating of a path exists or not" Name="pathExists" />
     </Sequence.Variables>
@@ -73,7 +73,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="835,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Trace" Message="[&quot;Start: MaintainStandardFolders&quot;]" />
-    <Sequence sap2010:Annotation.AnnotationText="Initialise variables" sap:VirtualizedContainerService.HintSize="835,655" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap2010:Annotation.AnnotationText="Initialise variables" sap:VirtualizedContainerService.HintSize="835,932" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -81,14 +81,57 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <f:GetCommonDataDirectory sap2010:Annotation.AnnotationText="Get the full path to the common data folder" CommonDataDirectory="[commonDataPath]" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="GetCommonDataDirectory_1">
+      <f:GetCommonDataDirectory sap2010:Annotation.AnnotationText="Get the full path to the common data folder" CommonDataDirectory="[commonDataPath]" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="GetCommonDataDirectory_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </f:GetCommonDataDirectory>
-      <Assign sap2010:Annotation.AnnotationText="Use the standard System.IO.Path.Combine function to combine the two paths into one in a safe way" sap:VirtualizedContainerService.HintSize="262,132" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <ui:MultipleAssign sap2010:Annotation.AnnotationText="Assign default values for the input, output, processing and error paths." DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,233" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[inputPath]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">input</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[outputPath]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">output</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[processingPath]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">processing</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[errorPath]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">error</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:MultipleAssign>
+      <Assign sap2010:Annotation.AnnotationText="Use the standard System.IO.Path.Combine function to combine the two paths into one in a safe way" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[inputPath]</OutArgument>
         </Assign.To>
@@ -101,7 +144,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[outputPath]</OutArgument>
         </Assign.To>
@@ -109,7 +152,7 @@
           <InArgument x:TypeArguments="x:String">[System.IO.Path.Combine(commonDataPath, outputPath.ToUpper())]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_3">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[processingPath]</OutArgument>
         </Assign.To>
@@ -117,7 +160,7 @@
           <InArgument x:TypeArguments="x:String">[System.IO.Path.Combine(commonDataPath, processingPath.ToUpper())]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_4">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[errorPath]</OutArgument>
         </Assign.To>
@@ -126,7 +169,7 @@
         </Assign.Value>
       </Assign>
     </Sequence>
-    <TryCatch sap2010:Annotation.AnnotationText="Try to make the standard input folder if required" DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="835,949" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch sap2010:Annotation.AnnotationText="Try to make the standard input folder if required" DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="835,1022" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -135,7 +178,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap2010:Annotation.AnnotationText="Check to see if the path exists and if necessary create it." sap:VirtualizedContainerService.HintSize="797,695" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap2010:Annotation.AnnotationText="Check to see if the path exists and if necessary create it." sap:VirtualizedContainerService.HintSize="797,764" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -143,14 +186,14 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:PathExists DisplayName="Path Exists" Exists="[pathExists]" sap:VirtualizedContainerService.HintSize="755,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[inputPath]" PathType="Folder" />
-          <If sap2010:Annotation.AnnotationText="Does the path exist?" Condition="[pathExists = False]" sap:VirtualizedContainerService.HintSize="755,447" sap2010:WorkflowViewState.IdRef="If_1">
+          <If sap2010:Annotation.AnnotationText="Does the path exist?" Condition="[pathExists = False]" sap:VirtualizedContainerService.HintSize="755,512" sap2010:WorkflowViewState.IdRef="If_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence sap2010:Annotation.AnnotationText="No, try to create it" sap:VirtualizedContainerService.HintSize="376,272" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <Sequence sap2010:Annotation.AnnotationText="No, try to create it" sap:VirtualizedContainerService.HintSize="376,333" sap2010:WorkflowViewState.IdRef="Sequence_4">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -158,11 +201,11 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[String.Format(&quot;The path '{0}' does not exist and must be created.&quot;, inputPath)]" />
-                <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Directory" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[inputPath]" />
+                <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Directory" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[inputPath]" />
               </Sequence>
             </If.Then>
             <If.Else>
-              <ui:LogMessage sap2010:Annotation.AnnotationText="Yes, skip this step" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,118" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[String.Format(&quot;The path '{0}' exists and does not need to be created.&quot;, inputPath)]">
+              <ui:LogMessage sap2010:Annotation.AnnotationText="Yes, skip this step" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[String.Format(&quot;The path '{0}' exists and does not need to be created.&quot;, inputPath)]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -190,7 +233,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <TryCatch sap2010:Annotation.AnnotationText="Try to make the standard output folder if required" DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="835,949" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch sap2010:Annotation.AnnotationText="Try to make the standard output folder if required" DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="835,1022" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -199,7 +242,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap2010:Annotation.AnnotationText="Check to see if the path exists and if necessary create it." sap:VirtualizedContainerService.HintSize="797,695" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence sap2010:Annotation.AnnotationText="Check to see if the path exists and if necessary create it." sap:VirtualizedContainerService.HintSize="797,764" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -208,14 +251,14 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:PathExists DisplayName="Path Exists" Exists="[pathExists]" sap:VirtualizedContainerService.HintSize="755,89" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[outputPath]" PathType="Folder" />
-          <If sap2010:Annotation.AnnotationText="Does the path exist?" Condition="[pathExists = False]" sap:VirtualizedContainerService.HintSize="755,447" sap2010:WorkflowViewState.IdRef="If_2">
+          <If sap2010:Annotation.AnnotationText="Does the path exist?" Condition="[pathExists = False]" sap:VirtualizedContainerService.HintSize="755,512" sap2010:WorkflowViewState.IdRef="If_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence sap2010:Annotation.AnnotationText="No, try to create it" sap:VirtualizedContainerService.HintSize="376,272" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Sequence sap2010:Annotation.AnnotationText="No, try to create it" sap:VirtualizedContainerService.HintSize="376,333" sap2010:WorkflowViewState.IdRef="Sequence_5">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -223,11 +266,11 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[String.Format(&quot;The path '{0}' does not exist and must be created.&quot;, outputPath)]" />
-                <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Directory" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[outputPath]" />
+                <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Directory" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[outputPath]" />
               </Sequence>
             </If.Then>
             <If.Else>
-              <ui:LogMessage sap2010:Annotation.AnnotationText="Yes, skip this step" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,118" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[String.Format(&quot;The path '{0}' exists and does not need to be created.&quot;, outputPath)]">
+              <ui:LogMessage sap2010:Annotation.AnnotationText="Yes, skip this step" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[String.Format(&quot;The path '{0}' exists and does not need to be created.&quot;, outputPath)]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -255,7 +298,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <TryCatch sap2010:Annotation.AnnotationText="Try to make the standard processing folder if required" DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="835,949" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+    <TryCatch sap2010:Annotation.AnnotationText="Try to make the standard processing folder if required" DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="835,1022" sap2010:WorkflowViewState.IdRef="TryCatch_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -264,7 +307,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap2010:Annotation.AnnotationText="Check to see if the path exists and if necessary create it." sap:VirtualizedContainerService.HintSize="797,695" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence sap2010:Annotation.AnnotationText="Check to see if the path exists and if necessary create it." sap:VirtualizedContainerService.HintSize="797,764" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -272,14 +315,14 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:PathExists DisplayName="Path Exists" Exists="[pathExists]" sap:VirtualizedContainerService.HintSize="755,89" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[processingPath]" PathType="Folder" />
-          <If sap2010:Annotation.AnnotationText="Does the path exist?" Condition="[pathExists = False]" sap:VirtualizedContainerService.HintSize="755,447" sap2010:WorkflowViewState.IdRef="If_3">
+          <If sap2010:Annotation.AnnotationText="Does the path exist?" Condition="[pathExists = False]" sap:VirtualizedContainerService.HintSize="755,512" sap2010:WorkflowViewState.IdRef="If_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence sap2010:Annotation.AnnotationText="No, try to create it" sap:VirtualizedContainerService.HintSize="376,272" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <Sequence sap2010:Annotation.AnnotationText="No, try to create it" sap:VirtualizedContainerService.HintSize="376,333" sap2010:WorkflowViewState.IdRef="Sequence_7">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -287,11 +330,11 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[String.Format(&quot;The path '{0}' does not exist and must be created.&quot;, processingPath)]" />
-                <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Directory" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CreateDirectory_3" Path="[processingPath]" />
+                <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Directory" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_3" Path="[processingPath]" />
               </Sequence>
             </If.Then>
             <If.Else>
-              <ui:LogMessage sap2010:Annotation.AnnotationText="Yes, skip this step" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,118" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[String.Format(&quot;The path '{0}' exists and does not need to be created.&quot;, processingPath)]">
+              <ui:LogMessage sap2010:Annotation.AnnotationText="Yes, skip this step" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[String.Format(&quot;The path '{0}' exists and does not need to be created.&quot;, processingPath)]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -319,7 +362,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <TryCatch sap2010:Annotation.AnnotationText="Try to make the standard error folder if required" DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="835,949" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+    <TryCatch sap2010:Annotation.AnnotationText="Try to make the standard error folder if required" DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="835,1022" sap2010:WorkflowViewState.IdRef="TryCatch_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -328,7 +371,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap2010:Annotation.AnnotationText="Check to see if the path exists and if necessary create it." sap:VirtualizedContainerService.HintSize="797,695" sap2010:WorkflowViewState.IdRef="Sequence_10">
+        <Sequence sap2010:Annotation.AnnotationText="Check to see if the path exists and if necessary create it." sap:VirtualizedContainerService.HintSize="797,764" sap2010:WorkflowViewState.IdRef="Sequence_10">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -337,14 +380,14 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:PathExists DisplayName="Path Exists" Exists="[pathExists]" sap:VirtualizedContainerService.HintSize="755,89" sap2010:WorkflowViewState.IdRef="PathExists_4" Path="[errorPath]" PathType="Folder" />
-          <If sap2010:Annotation.AnnotationText="Does the path exist?" Condition="[pathExists = False]" sap:VirtualizedContainerService.HintSize="755,447" sap2010:WorkflowViewState.IdRef="If_4">
+          <If sap2010:Annotation.AnnotationText="Does the path exist?" Condition="[pathExists = False]" sap:VirtualizedContainerService.HintSize="755,512" sap2010:WorkflowViewState.IdRef="If_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence sap2010:Annotation.AnnotationText="No, try to create it" sap:VirtualizedContainerService.HintSize="376,272" sap2010:WorkflowViewState.IdRef="Sequence_9">
+              <Sequence sap2010:Annotation.AnnotationText="No, try to create it" sap:VirtualizedContainerService.HintSize="376,333" sap2010:WorkflowViewState.IdRef="Sequence_9">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -352,11 +395,11 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[String.Format(&quot;The path '{0}' does not exist and must be created.&quot;, errorPath)]" />
-                <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Directory" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CreateDirectory_4" Path="[errorPath]" />
+                <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Directory" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_4" Path="[errorPath]" />
               </Sequence>
             </If.Then>
             <If.Else>
-              <ui:LogMessage sap2010:Annotation.AnnotationText="Yes, skip this step" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,118" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Trace" Message="[String.Format(&quot;The path '{0}' exists and does not need to be created.&quot;, errorPath)]">
+              <ui:LogMessage sap2010:Annotation.AnnotationText="Yes, skip this step" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Trace" Message="[String.Format(&quot;The path '{0}' exists and does not need to be created.&quot;, errorPath)]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -384,7 +427,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <Sequence sap2010:Annotation.AnnotationText="Set the out arguments" sap:VirtualizedContainerService.HintSize="835,479" sap2010:WorkflowViewState.IdRef="Sequence_11">
+    <Sequence sap2010:Annotation.AnnotationText="Set the out arguments" sap:VirtualizedContainerService.HintSize="835,483" sap2010:WorkflowViewState.IdRef="Sequence_11">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
