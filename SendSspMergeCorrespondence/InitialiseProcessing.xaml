@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="InitialiseProcessing" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="284,1054" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:f="clr-namespace:Flinders_Foundation;assembly=Flinders.Foundation" xmlns:f1="clr-namespace:Flinders_Foundation_Testing;assembly=Flinders.Foundation.Testing" xmlns:f2="clr-namespace:Flinders_Foundation_StudentSystem;assembly=Flinders.Foundation.StudentSystem" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="InitialiseProcessing" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1622,1063" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:f="clr-namespace:Flinders_Foundation;assembly=Flinders.Foundation" xmlns:f1="clr-namespace:Flinders_Foundation_StudentSystem;assembly=Flinders.Foundation.StudentSystem" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -23,6 +23,9 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Xml.Serialization</x:String>
+      <x:String>Flinders_Foundation</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -45,16 +48,24 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>Flinders.Foundation</AssemblyReference>
+      <AssemblyReference>Flinders.Foundation_Expressions_64538286</AssemblyReference>
+      <AssemblyReference>Flinders.Foundation_Expressions_64909449</AssemblyReference>
+      <AssemblyReference>Flinders.Foundation_Expressions_9444576</AssemblyReference>
+      <AssemblyReference>Flinders.Foundation_Expressions_17540457</AssemblyReference>
+      <AssemblyReference>Flinders.Foundation_Expressions_25220184</AssemblyReference>
+      <AssemblyReference>Flinders.Foundation_Expressions_47659054</AssemblyReference>
+      <AssemblyReference>Flinders.Foundation_Expressions_60508274</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Undertake tasks necessary to initialise the target system(s) for processing records in the input file." DisplayName="InitialiseProcessing" sap:VirtualizedContainerService.HintSize="244,974" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Undertake tasks necessary to initialise the target system(s) for processing records in the input file." DisplayName="InitialiseProcessing" sap:VirtualizedContainerService.HintSize="418,898" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The name of the credential to use to login to the Flinders Dashboard (Okta)" Name="credentialName" />
       <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The Okta environment to use for the login attempt" Name="oktaEnvironment" />
-      <Variable x:TypeArguments="sd:DataTable" sap2010:Annotation.AnnotationText="A DataTable containing all of the configuration items" Name="configurationItems" />
       <Variable x:TypeArguments="ui:Browser" sap2010:Annotation.AnnotationText="A reference to the currently active browser tab" Name="activeBrowser" />
-      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The Student Management System environment to use for the run of this process" Name="studentSystemEnvironment" />
       <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Full path to the common data directory" Name="commonDataDirectory" />
+      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="String to search for in the Student System." Name="studentSystemSearch" />
+      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="RPA environment in use on this system." Name="rpaEnvironment" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -62,51 +73,66 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap2010:Annotation.AnnotationText="Load configuration values for this process" sap:VirtualizedContainerService.HintSize="222,436" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap2010:Annotation.AnnotationText="Load configuration values for this process" sap:VirtualizedContainerService.HintSize="376,407" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <f:GetCommonDataDirectory CommonDataDirectory="[commonDataDirectory]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GetCommonDataDirectory_1" />
-      <f1:LoadTestConfiguration sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="LoadTestConfiguration_1" TestConfiguration="[configurationItems]" TestConfigurationWorkbookPath="[System.IO.Path.Combine(commonDataDirectory, &quot;Configuration\Flinders.Processes.StudentSystem\EnterStudentComments.xlsx&quot;)]" />
-      <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[configurationItems]" DisplayName="Lookup Data Table" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="EntryName" LookupValue="CredentialName" TargetColumnName="EntryValue">
-        <ui:LookupDataTable.CellValue>
-          <OutArgument x:TypeArguments="x:String">[credentialName]</OutArgument>
-        </ui:LookupDataTable.CellValue>
-      </ui:LookupDataTable>
-      <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[configurationItems]" DisplayName="Lookup Data Table" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_2" LookupColumnName="EntryName" LookupValue="OktaEnvironment" TargetColumnName="EntryValue">
-        <ui:LookupDataTable.CellValue>
-          <OutArgument x:TypeArguments="x:String">[oktaEnvironment]</OutArgument>
-        </ui:LookupDataTable.CellValue>
-      </ui:LookupDataTable>
-      <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[configurationItems]" DisplayName="Lookup Data Table" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_3" LookupColumnName="EntryName" LookupValue="StudentSystemEnvironment" TargetColumnName="EntryValue">
-        <ui:LookupDataTable.CellValue>
-          <OutArgument x:TypeArguments="x:String">[studentSystemEnvironment]</OutArgument>
-        </ui:LookupDataTable.CellValue>
-      </ui:LookupDataTable>
+      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[credentialName]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">StudentSystem</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[oktaEnvironment]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">production</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[studentSystemSearch]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">Student Study Plan Merge</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
+      <f:GetCommonDataDirectory CommonDataDirectory="[commonDataDirectory]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="GetCommonDataDirectory_1" />
+      <f:DetectEnvironment RpaEnvironmentName="{x:Null}" ValidEnvironmentName="{x:Null}" ValidEnvironmentValue="{x:Null}" DetectedEnvironment="[rpaEnvironment]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="DetectEnvironment_1" />
     </Sequence>
-    <f:LoginToOktaDashboard ProcessMessage="{x:Null}" ProcessSuccessful="{x:Null}" ActiveBrowser="[activeBrowser]" sap2010:Annotation.AnnotationText="Login to the Flinders Dashboard (Okta) using the stored credentials" CredentialName="[credentialName]" Environment="[oktaEnvironment]" sap:VirtualizedContainerService.HintSize="222,79" sap2010:WorkflowViewState.IdRef="LoginToOktaDashboard_1">
+    <f:LoginToOktaDashboard ProcessMessage="{x:Null}" ProcessSuccessful="{x:Null}" ActiveBrowser="[activeBrowser]" sap2010:Annotation.AnnotationText="Login to the Flinders Dashboard (Okta) using the stored credentials" CredentialName="[credentialName]" Environment="[oktaEnvironment]" sap:VirtualizedContainerService.HintSize="376,79" sap2010:WorkflowViewState.IdRef="LoginToOktaDashboard_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </f:LoginToOktaDashboard>
-    <f2:LoginToStudentSystem ProcessMessage="{x:Null}" ProcessSuccessful="{x:Null}" ActiveBrowser="[activeBrowser]" sap2010:Annotation.AnnotationText="Login to the appropriate Student Management System environment" Environment="[studentSystemEnvironment]" sap:VirtualizedContainerService.HintSize="222,79" sap2010:WorkflowViewState.IdRef="LoginToStudentSystem_1">
+    <f1:LoginToStudentSystem ProcessMessage="{x:Null}" ProcessSuccessful="{x:Null}" ActiveBrowser="[activeBrowser]" sap2010:Annotation.AnnotationText="Login to the appropriate Student Management System environment" Environment="[rpaEnvironment]" sap:VirtualizedContainerService.HintSize="376,79" sap2010:WorkflowViewState.IdRef="LoginToStudentSystem_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </f2:LoginToStudentSystem>
-    <f2:OpenWindow ProcessMessage="{x:Null}" ProcessSuccessful="{x:Null}" ActiveBrowser="[activeBrowser]" sap2010:Annotation.AnnotationText="Open the Student Comments window ready for processing the first record" sap:VirtualizedContainerService.HintSize="222,79" sap2010:WorkflowViewState.IdRef="OpenWindow_1" SearchString="Student Study Plan Merge">
+    </f1:LoginToStudentSystem>
+    <f1:OpenWindow ProcessMessage="{x:Null}" ProcessSuccessful="{x:Null}" ActiveBrowser="[activeBrowser]" sap2010:Annotation.AnnotationText="Open the Student Comments window ready for processing the first record" sap:VirtualizedContainerService.HintSize="376,79" sap2010:WorkflowViewState.IdRef="OpenWindow_1" SearchString="[studentSystemSearch]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </f2:OpenWindow>
+    </f1:OpenWindow>
   </Sequence>
 </Activity>
