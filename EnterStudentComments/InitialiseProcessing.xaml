@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="InitialiseProcessing" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1615,1194" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:f="clr-namespace:Flinders_Foundation;assembly=Flinders.Foundation" xmlns:f1="clr-namespace:Flinders_Foundation_StudentSystem;assembly=Flinders.Foundation.StudentSystem" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="InitialiseProcessing" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="982,1466" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:f="clr-namespace:Flinders_Foundation;assembly=Flinders.Foundation" xmlns:f1="clr-namespace:Flinders_Foundation_StudentSystem;assembly=Flinders.Foundation.StudentSystem" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -64,9 +64,10 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Undertake tasks necessary to initialise the target system(s) for processing records in the input file." DisplayName="InitialiseProcessing" sap:VirtualizedContainerService.HintSize="418,1029" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Undertake tasks necessary to initialise the target system(s) for processing records in the input file." DisplayName="InitialiseProcessing" sap:VirtualizedContainerService.HintSize="478,1447" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The name of the credential to use to login to the Flinders Dashboard (Okta)" Name="credentialName" />
       <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The Okta environment to use for the login attempt" Name="oktaEnvironment" />
@@ -81,7 +82,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap2010:Annotation.AnnotationText="Load configuration values for this process" sap:VirtualizedContainerService.HintSize="376,407" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap2010:Annotation.AnnotationText="Load configuration values for this process" sap:VirtualizedContainerService.HintSize="436,491" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -118,25 +119,60 @@
           </scg:List>
         </ui:MultipleAssign.AssignOperations>
       </ui:MultipleAssign>
-      <f:GetCommonDataDirectory CommonDataDirectory="[commonDataDirectory]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="GetCommonDataDirectory_1" />
-      <f:DetectEnvironment RpaEnvironmentName="{x:Null}" ValidEnvironmentName="{x:Null}" ValidEnvironmentValue="{x:Null}" DetectedEnvironment="[rpaEnvironment]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="DetectEnvironment_1" />
+      <f:GetCommonDataDirectory sap2010:Annotation.AnnotationText="Obtain the data directory used by all RPA activities." CommonDataDirectory="[commonDataDirectory]" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="GetCommonDataDirectory_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </f:GetCommonDataDirectory>
+      <f:DetectEnvironment RpaEnvironmentName="{x:Null}" ValidEnvironmentName="{x:Null}" ValidEnvironmentValue="{x:Null}" sap2010:Annotation.AnnotationText="Determine the RPA environment to be used." DetectedEnvironment="[rpaEnvironment]" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="DetectEnvironment_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </f:DetectEnvironment>
     </Sequence>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="376,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;&lt; Flinders.Processes.StudentSystem.EnterStudentComments &gt; credentialName : &quot; +  credentialName + vbNewLine +&#xA;&quot;&lt; Flinders.Processes.StudentSystem.EnterStudentComments &gt; oktaEnvironment : &quot; +  oktaEnvironment + vbNewLine +&#xA;&quot;&lt; Flinders.Processes.StudentSystem.EnterStudentComments &gt; studentSystemSearch : &quot; +  studentSystemSearch + vbNewLine +&#xA;&quot;&lt; Flinders.Processes.StudentSystem.EnterStudentComments &gt; rpaEnvironment: &quot; +  rpaEnvironment + vbNewLine]" />
-    <f:LoginToOktaDashboard ProcessMessage="{x:Null}" ProcessSuccessful="{x:Null}" ActiveBrowser="[activeBrowser]" sap2010:Annotation.AnnotationText="Login to the Flinders Dashboard (Okta) using the stored credentials" CredentialName="[credentialName]" Environment="[oktaEnvironment]" sap:VirtualizedContainerService.HintSize="376,79" sap2010:WorkflowViewState.IdRef="LoginToOktaDashboard_1">
+    <ui:CommentOut sap2010:Annotation.AnnotationText="Commenting out activities that are not required for now." DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,425" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence sap2010:Annotation.AnnotationText="No need to log the environment variables used for now." DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,316" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage sap2010:Annotation.AnnotationText="Log the following:&#xD;&#xA;1. Which credentials in Orchestrator were used to log onto the Student System.&#xD;&#xA;2. The Okta environment used.&#xD;&#xA;3. The Student System environment used.&#xD;&#xA;4. The overall RPA environment used." DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,193" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Flinders.Processes.StudentSystem.EnterStudentComments &gt;&gt; credentialName : &quot; +  credentialName + vbNewLine +&#xD;&#xA;&quot;Flinders.Processes.StudentSystem.EnterStudentComments &gt;&gt; oktaEnvironment : &quot; +  oktaEnvironment + vbNewLine +&#xD;&#xA;&quot;Flinders.Processes.StudentSystem.EnterStudentComments &gt;&gt; studentSystemSearch : &quot; +  studentSystemSearch + vbNewLine +&#xD;&#xA;&quot;Flinders.Processes.StudentSystem.EnterStudentComments &gt;&gt; rpaEnvironment: &quot; +  rpaEnvironment + vbNewLine]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <f:LoginToOktaDashboard ProcessMessage="{x:Null}" ProcessSuccessful="{x:Null}" ActiveBrowser="[activeBrowser]" sap2010:Annotation.AnnotationText="Login to the Flinders Dashboard (Okta) using the stored credentials" CredentialName="[credentialName]" Environment="[oktaEnvironment]" sap:VirtualizedContainerService.HintSize="436,79" sap2010:WorkflowViewState.IdRef="LoginToOktaDashboard_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </f:LoginToOktaDashboard>
-    <f1:LoginToStudentSystem ProcessMessage="{x:Null}" ProcessSuccessful="{x:Null}" ActiveBrowser="[activeBrowser]" sap2010:Annotation.AnnotationText="Login to the appropriate Student Management System environment" Environment="[rpaEnvironment]" sap:VirtualizedContainerService.HintSize="376,79" sap2010:WorkflowViewState.IdRef="LoginToStudentSystem_1">
+    <f1:LoginToStudentSystem ProcessMessage="{x:Null}" ProcessSuccessful="{x:Null}" ActiveBrowser="[activeBrowser]" sap2010:Annotation.AnnotationText="Login to the appropriate Student Management System environment" Environment="[rpaEnvironment]" sap:VirtualizedContainerService.HintSize="436,79" sap2010:WorkflowViewState.IdRef="LoginToStudentSystem_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </f1:LoginToStudentSystem>
-    <f1:OpenWindow ProcessMessage="{x:Null}" ProcessSuccessful="{x:Null}" ActiveBrowser="[activeBrowser]" sap2010:Annotation.AnnotationText="Open the Student Comments window ready for processing the first record" sap:VirtualizedContainerService.HintSize="376,79" sap2010:WorkflowViewState.IdRef="OpenWindow_1" SearchString="[studentSystemSearch]">
+    <f1:OpenWindow ProcessMessage="{x:Null}" ProcessSuccessful="{x:Null}" ActiveBrowser="[activeBrowser]" sap2010:Annotation.AnnotationText="Open the Student Comments window ready for processing the first record" sap:VirtualizedContainerService.HintSize="436,79" sap2010:WorkflowViewState.IdRef="OpenWindow_1" SearchString="[studentSystemSearch]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
