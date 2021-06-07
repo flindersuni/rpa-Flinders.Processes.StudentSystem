@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Convenience package for invoking the rpa-lint app on the Flinders.Processes.StudentSystem processes",
   "scripts": {
-    "test": "rpa-lint -i ./SendSspMergeCorrespondence -p -r -q && rpa-lint -i ./EnterStudentComments -p -r -q && rpa-lint -i ./UpdateSspUserField -p -r -q "
+    "test": "rpa-lint -i ./SendSspMergeCorrespondence -r -q && rpa-lint -i ./EnterStudentComments -r -q && rpa-lint -i ./UpdateSspUserField -r -q "
   },
   "repository": {
     "type": "git",
