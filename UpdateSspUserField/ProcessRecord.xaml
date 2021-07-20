@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ProcessRecord" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:f="clr-namespace:Flinders_Foundation_StudentSystem;assembly=Flinders.Foundation.StudentSystem" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ProcessRecord" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:fr="clr-namespace:Flinders_Foundation_StudentSystem.rpa_Flinders_Foundation_StudentSystem;assembly=Flinders.Foundation.StudentSystem" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="A record that needs to be processed" Name="RecordToBeProcessed" Type="InOutArgument(sd:DataRow)" />
     <x:Property sap2010:Annotation.AnnotationText="A flag indicating if processing was successful or not" Name="ProcessSuccessful" Type="OutArgument(x:Boolean)" />
@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>262,375</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>768,457.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -32,6 +32,12 @@
       <x:String>System.Windows.Markup</x:String>
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
+      <x:String>Flinders_Foundation_StudentSystem.rpa_Flinders_Foundation_StudentSystem</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -54,10 +60,12 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>Flinders.Foundation</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Undertake the steps necessary to process a record from the input file. Assuming the target system(s) have been initialised appropriately." DisplayName="ProcessRecord" sap:VirtualizedContainerService.HintSize="222,295" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Undertake the steps necessary to process a record from the input file. Assuming the target system(s) have been initialised appropriately." DisplayName="ProcessRecord" sap:VirtualizedContainerService.HintSize="476.8,392.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:Browser" sap2010:Annotation.AnnotationText="A reference to the currently active browser tab" Name="activeBrowser" />
     </Sequence.Variables>
@@ -67,7 +75,18 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <f:UpdateSspUserField ActiveBrowser="[activeBrowser]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="UpdateSspUserField_1" ProcessMessage="[ProcessMessage]" ProcessSuccessful="[ProcessSuccessful]" StudentID="[RecordToBeProcessed(&quot;StudentID&quot;).ToString()]" StudyPackageAttempt="[RecordToBeProcessed(&quot;TopicAttempt&quot;).ToString()]" StudyPackageCode="[RecordToBeProcessed(&quot;TopicCode&quot;).ToString()]" StudyPackageVersion="[RecordToBeProcessed(&quot;TopicVersion&quot;).ToString()]" UserFieldLabel="[RecordToBeProcessed(&quot;UserFieldLabel&quot;).ToString()]" UserFieldValue="[RecordToBeProcessed(&quot;UserFieldValue&quot;).ToString()]" />
-    <f:ResetWindow ProcessMessage="{x:Null}" ProcessSuccessful="{x:Null}" ActiveBrowser="[activeBrowser]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="ResetWindow_1" WindowName="Student Study Package" />
+    <fr:UpdateSspUserField ActiveBrowser="[activeBrowser]" sap:VirtualizedContainerService.HintSize="435.2,22.4" sap2010:WorkflowViewState.IdRef="UpdateSspUserField_1" ProcessMessage="[ProcessMessage]" ProcessSuccessful="[ProcessSuccessful]" StudentID="[RecordToBeProcessed(&quot;StudentID&quot;).ToString()]" StudyPackageAttempt="[RecordToBeProcessed(&quot;TopicAttempt&quot;).ToString()]" StudyPackageCode="[RecordToBeProcessed(&quot;TopicCode&quot;).ToString()]" StudyPackageVersion="[RecordToBeProcessed(&quot;TopicVersion&quot;).ToString()]" UserFieldLabel="[RecordToBeProcessed(&quot;UserFieldLabel&quot;).ToString()]" UserFieldValue="[RecordToBeProcessed(&quot;UserFieldValue&quot;).ToString()]" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="435.2,193.6" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="241.6,115.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <fr:ResetWindow ProcessMessage="{x:Null}" ProcessSuccessful="{x:Null}" ActiveBrowser="[activeBrowser]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="ResetWindow_1" WindowName="Student Study Package" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
   </Sequence>
 </Activity>
