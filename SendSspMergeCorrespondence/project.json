@@ -4,7 +4,7 @@
   "main": "Main.xaml",
   "dependencies": {
     "Flinders.Foundation": "2.1.0",
-    "Flinders.Foundation.StudentSystem": "2.0.7",
+    "Flinders.Foundation.StudentSystem": "2.1.1",
     "UiPath.Excel.Activities": "[2.9.3]",
     "UiPath.Mail.Activities": "[1.9.3]",
     "UiPath.System.Activities": "[20.10.1]",
@@ -63,5 +63,6 @@
   ],
   "isTemplate": false,
   "templateProjectData": {},
-  "publishData": {}
+  "publishData": {},
+  "targetFramework": "Legacy"
 }
